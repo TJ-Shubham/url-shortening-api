@@ -3,36 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
+  <meta name="description" content="URL shortening API">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <title>Shortly URL shortening API Challenge</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <!-- <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style> -->
 </head>
 <body>
   <header>
-    <div class="nav-option">
-      <img src="./images/logo.svg" alt="shortly web icon">
-      <nav>
-        <ul>
+    <nav class="nav-bar">
+      <div class="nav-left">
+        <a class="logo" href="#">
+          <img src="./images/logo.svg" alt="url logo" />
+        </a>
+        <ul class="desk-nav">
           <li><a href="#">Features</a></li>
           <li><a href="#">Pricing</a></li>
           <li><a href="#">Resources</a></li>
         </ul>
-      </nav>
-    </div>
-    <div class="log-option">
-      <a href="#">Login</a>
-      <a href="#">Sign Up</a>
+      </div>
+      <div class="desk-forms">
+        <a href="#">Login</a>
+        <a class="btn" href="#">Sign Up</a>
+      </div>
+      <a class="hamburger-menu" href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </nav>
+    <div class="nav-links">
+      <ul class="nav-list">
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Resources</a></li>
+      </ul>
+      <hr class="nav-hr" />
+      <div class="form-links">
+        <a href="#">Login</a>
+        <a class="btn" href="#">Sign Up</a>
+      </div>
     </div>
   </header>
   <main>
@@ -126,5 +135,6 @@
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
   </div> -->
+  <script src="index.js"></script>
 </body>
 </html>
