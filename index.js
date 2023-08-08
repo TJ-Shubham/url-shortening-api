@@ -6,13 +6,7 @@ const container = document.querySelector("#container");
 let p;
 
 hamburgerbtn.addEventListener("click", () => {
-  if (hamburgerbtn.classList.contains("active")) {
-    navlinks.style.display = "none";
-    hamburgerbtn.classList.remove("active");
-  } else {
-    hamburgerbtn.classList.add("active");
-    navlinks.style.display = "block";
-  }
+  navlinks.style.display = hamburgerbtn.classList.toggle("active") ? "block" : "none";
 });
 
 form.addEventListener("submit", async (event) => {
@@ -21,15 +15,14 @@ form.addEventListener("submit", async (event) => {
   const response = await fetch(`https://api.shrtco.de/v2/shorten?url=${url}`);
   const data = await response.json();
 
-  const output = document.createElement("div");
-  output.classList.add("output");
-
   if (data.ok) {
     // display the shortened URL
+    const output = document.createElement("div");
+    output.classList.add("output");
     output.innerHTML = `
       <p>${url}</p>
       <hr>
-      <p><a href="${data.result.short_link}" target="_blank"  rel="noopener noreferrer">${data.result.short_link}</a></p>
+      <p><a href="${data.result.short_link}" target="_blank" rel="noopener noreferrer">${data.result.short_link}</a></p>
       <button class="copy-btn">Copy</button>
     `;
     const copyBtn = output.querySelector(".copy-btn");
@@ -39,40 +32,28 @@ form.addEventListener("submit", async (event) => {
         copyBtn.textContent = "Copied!";
       });
     });
-    
-    container.appendChild(output);
-    form.reset();
-    input.focus();
 
-    // reset copy button after delay
-    setTimeout(() => {
-      copyBtn.style.backgroundColor = "";
-      copyBtn.textContent = "Copy";
-    }, 3000);
+    container.appendChild(output);
   } else {
     // handle error
-    output.textContent = `Error: ${data.error}`;
-    container.appendChild(output);
-
     input.style.setProperty("--placeholder-color", "#ff9c9c");
 
-    // add p element with text "Please add a link" below the input
+    // add p element with text
     if (!p) {
       p = document.createElement("p");
       p.textContent = "Please add a link";
       p.style.color = "red";
       p.style.fontSize = "0.8rem";
-      form.insertBefore(p, input.nextSibling);
+      window.innerWidth < 900 ? form.insertBefore(p, input.nextSibling) : form.appendChild(p);
     }
-    form.reset();
-    input.focus();
-    setTimeout(() => {
-      container.removeChild(output);
-      input.style.removeProperty("--placeholder-color");
-      if (p) {
-        form.removeChild(p);
-        p = null;
-      }
-    }, 3000);
   }
+  form.reset();
+  input.focus();
+  setTimeout(() => {
+    input.style.removeProperty("--placeholder-color");
+    if (p) {
+      form.removeChild(p);
+      p = null;
+    }
+  }, 3000);
 });
