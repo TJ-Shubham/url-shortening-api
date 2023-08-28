@@ -166,9 +166,12 @@ body {
   transition: opacity 0.3s ease-in-out;
 }
 
-.hero-image img {
-  height: 100%;
-  width: 100%;
+.hero-image{
+  background-image: url("./images/illustration-working.svg");
+  background-size: 120%;
+  background-repeat: no-repeat;
+  background-position: left 40px center;
+  height: 18.7rem;
 }
 
 .hero-btn:hover,
@@ -479,11 +482,9 @@ footer {
   }
 
   .hero-image {
-    margin-left: 1em;
-  }
-
-  .hero-image img {
-    height: 100%;
+    height: auto;
+    background-size: 100%;
+    background-position: left 80px center;
   }
 
   .hero-heading {
