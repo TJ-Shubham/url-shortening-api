@@ -48,6 +48,8 @@ Users should be able to:
 - Use media query
 - JavaScript DOM
 - API
+- Tailwind CSS 
+- React + Vite
 
 ### What I learned
 
